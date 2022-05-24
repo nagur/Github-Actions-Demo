@@ -4,17 +4,17 @@ on:
     branches:
       - dev
 jobs:
-  productionPromotion:
+  PR-to-Main:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: dev
-      - name: Reset promotion branch
+          ref: main
+      - name: Reset dev branch
         run: |
-          git fetch origin main:main
-          git reset --hard main
+          git fetch origin dev:dev
+          git reset --hard dev
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
-          branch: production-promotion
+          branch: dev
