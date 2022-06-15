@@ -2,7 +2,7 @@ name: Create main promotion pull request
 on:
   push:
     branches:
-      - test
+      - testing
 jobs:
   PR-to-Test:
     runs-on: ubuntu-latest
@@ -12,10 +12,10 @@ jobs:
           ref: prod
       - name: Reset dev branch
         run: |
-          git fetch origin test:test
-          git reset --hard test
+          git fetch origin testing:testing
+          git reset --hard testing
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
           commit: "creating pull request for dev branch change"
-          branch: test
+          branch: testing
