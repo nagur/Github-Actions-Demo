@@ -11,7 +11,7 @@ on:
 
   # Try enabling auto-merge for all open pull requests.
   schedule:
-    - cron: 0 * * * *
+    - cron: 5 * * * *
 
   # Try enabling auto-merge for a pull request when a draft is marked as “ready for review”, when
   # a required label is applied or when a “do not merge” label is removed, or when a pull request
@@ -42,6 +42,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           merge-method: rebase
           do-not-merge-labels: never-merge
-          required-labels: automerge
+          #required-labels: automerge
           pull-request: ${{ github.event.inputs.pull-request }}
           dry-run: true
