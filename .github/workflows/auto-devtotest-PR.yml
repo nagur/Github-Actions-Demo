@@ -12,6 +12,7 @@ jobs:
           ref: testing
       - name: Reset dev branch
         run: |
+          git pull
           git fetch origin dev:dev
           git reset --hard dev
       - name: Create Pull Request
