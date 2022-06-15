@@ -4,18 +4,18 @@ on:
     branches:
       - test
 jobs:
-  PR-to-Main:
+  PR-to-Test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           ref: prod
-      - name: Reset main branch
+      - name: Reset dev branch
         run: |
           git fetch origin test:test
           git reset --hard test
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
-          commit: "creating pull request for test branch change"
+          commit: "creating pull request for dev branch change"
           branch: test
