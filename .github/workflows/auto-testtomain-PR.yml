@@ -1,0 +1,21 @@
+name: Create main promotion pull request
+on:
+  push:
+    branches:
+      - test
+jobs:
+  PR-to-Main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+      - name: Reset dev branch
+        run: |
+          git fetch origin test:test
+          git reset --hard test
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit: "creating pull request for dev branch change"
+          branch: test
