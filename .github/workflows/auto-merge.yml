@@ -1,5 +1,27 @@
-name: Automerge
+name: Auto-merge
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+     branches:
+       - dev
+       - testing
+       - prod
+       
 
+jobs:
+  PR-to-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Make changes to pull request here
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.PAT }}    
       - name: Enable Pull Request Automerge
         if: steps.cpr.outputs.pull-request-operation == 'created'
         uses: peter-evans/enable-pull-request-automerge@v2
@@ -7,15 +29,53 @@ name: Automerge
           token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: squash
-
-      - uses: peter-evans/enable-pull-request-automerge@v2
+          
+      - name: merging
+        uses: peter-evans/enable-pull-request-automerge@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: 39
-
+          
       - name: Auto approve
         if: steps.cpr.outputs.pull-request-operation == 'created'
         uses: juliangruber/approve-pull-request-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ steps.cpr.outputs.pull-request-number }}
+          number: ${{ steps.cpr.outputs.pull-request-number }}          
+
+
+       
+#       - name: Only if auto-merge is enabled
+#         if: ${{ github.event.pull_request.auto_merge }}
+#         run: echo "Auto-merge IS ENABLED"
+
+#       - name: Only if auto-merge is NOT enabled
+#         if: ${{ !github.event.pull_request.auto_merge }}
+#         run: echo "Auto-merge is NOT enabled"
+        
+#       - uses: peter-evans/enable-pull-request-automerge@v2
+#       with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           pull-request-number: 39
+
+# name: Automerge
+
+#       - name: Enable Pull Request Automerge
+#         if: steps.cpr.outputs.pull-request-operation == 'created'
+#         uses: peter-evans/enable-pull-request-automerge@v2
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+#           merge-method: squash
+
+#       - uses: peter-evans/enable-pull-request-automerge@v2
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           pull-request-number: 39
+
+#       - name: Auto approve
+#         if: steps.cpr.outputs.pull-request-operation == 'created'
+#         uses: juliangruber/approve-pull-request-action@v1
+#         with:
+#           github-token: ${{ secrets.GITHUB_TOKEN }}
+#           number: ${{ steps.cpr.outputs.pull-request-number }}
