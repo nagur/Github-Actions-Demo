@@ -1,0 +1,11 @@
+name: Schedule workflow
+on:
+  schedule:
+    - cron: "0 * * * *" #Every minute at 0 of the hour it will run; , ex: "1  * * * *" every 59 min it will run. 1,2 min one & two, 1-3 , 0/15 every 15min.
+  jobs:
+    Test-schedule:
+      runs-on: ubuntu-latest
+      steps:
+       - name: echo
+         run: echo "Hello schedule"
+     
