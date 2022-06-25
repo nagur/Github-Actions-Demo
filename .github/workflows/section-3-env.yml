@@ -5,10 +5,10 @@ env:
   
 jobs:
   log-env:
-  runs-on: ubuntu-latest
-  env: 
-    JOB_ENV: Available to all steps 
-  steps:
+    runs-on: ubuntu-latest
+    env: 
+      JOB_ENV: Available to all steps 
+    steps:
     - name: Log env vars
       run: |
           echo ${WF_ENV}
