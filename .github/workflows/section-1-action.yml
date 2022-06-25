@@ -15,6 +15,9 @@ jobs:
         run: |
             pwd
             ls -lart
+            echo $GITHUB_SHA
+            echo $GITHUB_REPOSITORY
+            echo "${{github.token}}"
       - name: JS actions
         uses: actions/hello-world-javascript-action@v1 # using publically available actions
         id: greet
