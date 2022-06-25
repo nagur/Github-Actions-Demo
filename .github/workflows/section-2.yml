@@ -1,0 +1,30 @@
+name: Actions workflow-section-2
+on: 
+  push:
+  pull_request:
+    types: [closed,assigned,opened,reopened] # run the actions on pull_request also. Events can be found in documentations. Push does not activity type, where as pull_request is having
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List files
+        run: |
+           pwd
+           ls
+           ls -lart
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: after checkout
+        run: |
+            pwd
+            ls -lart
+            echo $GITHUB_SHA
+            echo $GITHUB_REPOSITORY
+            echo "${{github.token}}"
+      - name: JS actions
+        uses: actions/hello-world-javascript-action@v1 # using publically available actions
+        id: greet
+        with: 
+          who-to-greet: John DR # input to the action
+      - name: Log the greet
+        run: echo "${{steps.greet.outputs.time}}". #display the output using the step Id 
