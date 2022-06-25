@@ -1,0 +1,12 @@
+# Links: https://docs.github.com/en/actions/learn-github-actions/contexts#functions
+name: functions-demo
+on: push
+jobs:
+  funtions:
+    runs: ubuntu-18.04
+    steps:
+      - name: dump
+        run: |
+            echo ${{ contains('hello', 'll) }}
+            echo ${{ startsWith('hello', 'he' }}
+            ehco ${{ format ('Hello {0} {1} {2}', 'World', '!', '?') }}
