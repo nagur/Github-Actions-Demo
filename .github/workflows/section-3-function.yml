@@ -3,10 +3,22 @@ name: functions-demo
 on: push
 jobs:
   funtions:
-    runs: ubuntu-18.04
+    runs-on: ubuntu-18.04
     steps:
       - name: dump
         run: |
             echo ${{ contains('hello', 'll') }}
             echo ${{ startsWith('hello', 'he') }}
             echo ${{ format ('Hello {0} {1} {2}', 'World', '!', '?') }}
+  one:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' #run on push 
+    steps:
+     - name: Dump GitHub context
+       env:
+         GITHUB_CONTEXT: ${{ toJson(github) }}
+       run: echo "$GITHUB_CONTEXT"
+ # LInk: https://docs.github.com/en/actions/learn-github-actions/contexts#job-status-check-functions'
+ # Run the jobs if failure occur in the previous step. 
+ # If you don't want to fail the workflows with known errors, use the job-status-check fun and proceed.
+      
