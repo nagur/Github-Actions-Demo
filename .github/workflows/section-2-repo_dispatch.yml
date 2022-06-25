@@ -1,0 +1,8 @@
+name: Repo Dispatch # Trigger a workflow using hook
+on:
+  repository_dispatch:
+    types: [build] #eventype for the hook trigger.
+     ## Usefull when you want to trigger the actions from other repo, for the dependency purpose. Use the github PAT to trigger the workflow using hook.
+     # Outside of your github events if you would like to trigger the workflows, its useful.
+  pull_request:
+    types: [closed,assigned,opened,reopened]
