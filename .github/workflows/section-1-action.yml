@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: JS actions
-        uses: actions/hello-world-javascript-actions@v1 # using publically available actions
+        uses: actions/hello-world-javascript-action@v1 # using publically available actions
         id: greet
         with: 
           who-to-greet: John DR # input to the action
