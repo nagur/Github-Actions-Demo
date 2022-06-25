@@ -6,3 +6,5 @@ jobs:
     steps:
      - name: echo string
        run: echo "hello"
+     - name: Python command
+       run: python --version
