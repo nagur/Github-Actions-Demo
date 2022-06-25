@@ -1,5 +1,5 @@
 name: Actions workflow-section-2
-on: 
+on:  # events - https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
   push:
   pull_request:
     types: [closed,assigned,opened,reopened] # run the actions on pull_request also. Events can be found in documentations. Push does not activity type, where as pull_request is having
