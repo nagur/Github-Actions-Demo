@@ -15,3 +15,4 @@ jobs:
           echo ${JOB_ENV}
           
 # We can set the env for step level,job level and global for the workflow. Also we have the common global vars by Github.
+# Link:  https://docs.github.com/en/actions/learn-github-actions/environment-variables
