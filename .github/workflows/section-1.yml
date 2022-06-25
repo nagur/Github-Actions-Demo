@@ -8,3 +8,9 @@ jobs:
        run: echo "hello"
      - name: Python command
        run: python --version
+  run-windows-command:
+    runs-on: windows-latest
+    steps: 
+     - name: Dir
+       run: Get-Location
+  
