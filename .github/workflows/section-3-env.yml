@@ -16,3 +16,15 @@ jobs:
           
 # We can set the env for step level,job level and global for the workflow. Also we have the common global vars by Github.
 # Link:  https://docs.github.com/en/actions/learn-github-actions/environment-variables
+
+##################Encrypting env#######################
+# Create secret in settings of the repository and use the name of the variable in the workflow like below
+
+# name: Env
+# on: push
+# env:
+#   WF_ENV: ${{secrets.WF_ENV}}
+
+### Without setting  the var in secrets (GITHUB_TOKEN )variable we can use it directly, its by default available in github.
+
+## Link: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
