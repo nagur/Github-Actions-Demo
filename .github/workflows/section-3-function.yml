@@ -18,7 +18,10 @@ jobs:
        env:
          GITHUB_CONTEXT: ${{ toJson(github) }}
        run: echo "$GITHUB_CONTEXT"
+       
  # LInk: https://docs.github.com/en/actions/learn-github-actions/contexts#job-status-check-functions'
  # Run the jobs if failure occur in the previous step. 
  # If you don't want to fail the workflows with known errors, use the job-status-check fun and proceed.
       
+      
+      # needs can be used to dependend on the jobs in workflow.
