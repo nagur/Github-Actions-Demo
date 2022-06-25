@@ -1,0 +1,17 @@
+# Links:  1. https://www.gnupg.org/
+# 2. https://docs.github.com/en/actions/security-guides/encrypted-secrets
+name: Encript and Decrypt
+on: push
+
+jobs:
+  decrypt: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Decrypt file
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/secret.json secret.json.gpg
+        env:
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+      - name: print our file
+        run: cat $HOME/secret.json #Never do this on realtime projects
+          
