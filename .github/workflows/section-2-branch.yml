@@ -1,0 +1,15 @@
+name: Run actions on specific branches
+on:
+  push:
+    branches:
+      - master
+      - 'feature/*'  # matches feature/featA,feature/featB, etc, 
+      - 'feature/**'  # mathces feature/feat/a. 
+      - '!feature/featC'. # Not matching
+    tags:
+      - v1.*
+    paths:
+      - '**.js'. # run if the extension of the files are changed
+    paths-ignore:
+      - 'docs/**'. # Dont run the docs folder changes.
+# Link: - https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
