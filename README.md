@@ -1,4 +1,2 @@
 # Github-Actions-Demo
-# Adding first PR check
-# Auto-merge test
-# Auto-merge test1
+### Section 4,5,6 will be moved to different project called Docker-CICD
