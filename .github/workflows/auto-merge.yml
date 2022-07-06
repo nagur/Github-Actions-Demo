@@ -10,8 +10,8 @@ on:
       - dev
 
   # Try enabling auto-merge for all open pull requests.
-  schedule:
-    - cron: 5 * * * *
+#   schedule:
+#     - cron: 5 * * * *
 
   # Try enabling auto-merge for a pull request when a draft is marked as “ready for review”, when
   # a required label is applied or when a “do not merge” label is removed, or when a pull request
